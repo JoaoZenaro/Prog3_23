@@ -32,6 +32,10 @@
                 : getInteger(Convert.ToInt32(num));
     }
 
+    private static string[] arrUnid = new string[] {"Um", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove", "Dez", "Onze", "Doze", "Treze", "Quatorze", "Quinze", "Dezesseis", "Dezessete", "Dezoito", "Dezenove"};
+    private static string[] arrDez = new string[] {"Vinte", "Trinta", "Quarenta", "Cinquenta", "Sessenta", "Setenta", "Oitenta", "Noventa"};
+    private static string[] arrCent = new string[] {"Cento", "Duzentos", "Trezentos", "Quatrocentos", "Quinhentos", "Seiscentos", "Setecentos", "Oitocentos", "Novecentos"};
+
     private static string getInteger(int num)
     {
         switch (num)
@@ -39,18 +43,12 @@
             case 0:
                 return "Zero";
             case var case1 when 1 <= case1 && case1 <= 19:
-                string[] arrUnid = new string[] { "Um", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove", "Dez", "Onze", "Doze", "Treze", "Quatorze", "Quinze", "Dezesseis", "Dezessete", "Dezoito", "Dezenove" };
                 return arrUnid[num - 1] + " ";
-            
             case var case1 when 20 <= case1 && case1 <= 99:
-                string[] arrDez = new string[] { "Vinte", "Trinta", "Quarenta", "Cinquenta", "Sessenta", "Setenta", "Oitenta", "Noventa" };
-
                 return (num % 10 == 0) ? arrDez[num / 10 - 2] + " " : arrDez[num / 10 - 2] + " e " + getInteger(num % 10);
             case 100:
                 return "Cem ";
             case var case2 when 101 <= case2 && case2 <= 999:
-                string[] arrCent = new string[] { "Cento", "Duzentos", "Trezentos", "Quatrocentos", "Quinhentos", "Seiscentos", "Setecentos", "Oitocentos", "Novecentos" };
-
                 return (num % 100 == 0) ? arrCent[num / 100 - 1] + " " : arrCent[num / 100 - 1] + " e " + getInteger(num % 100);
             case var case3 when 1000 <= case3 && case3 <= 1999:
                 switch (num % 1000)
