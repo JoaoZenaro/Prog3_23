@@ -15,3 +15,5 @@ for (int i = 0; i < qtdChars; i++)
 {
     Console.WriteLine(meuNumeroTexto[i]);
 }
+
+Console.WriteLine($"{myFloat} {myDouble}");

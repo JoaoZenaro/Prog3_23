@@ -1,13 +1,13 @@
 ﻿Console.WriteLine("Ola, bem-vindo!");
 Console.WriteLine("Qual eh o seu nome?");
-string name = Console.ReadLine();
+string? name = Console.ReadLine();
 Console.WriteLine($"Ola, {name}, prazer conhece-lo");
 
 // declarar sem inicializar / primitivo
 string message1;
 
 // Declarar inicializar / abstrato
-String messege2 = "Seu Nome Completo";
+String message2 = "Seu Nome Completo";
 
 // Declarar String vazia
 string message3 = String.Empty;
@@ -22,5 +22,7 @@ var palavras = message1.Split(';');
 foreach (var word in palavras)
 {
     int a = 10;
-    Console.WriteLine(word);
+    Console.WriteLine(word, a);
 }
+
+Console.WriteLine(message2, message4, message5);
