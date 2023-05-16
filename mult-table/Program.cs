@@ -19,14 +19,14 @@ catch (System.Exception)
 //     }
 // }
 
-// static int MultiplicationTable(int n, int m = 9)
-// {
-//     if (n <= 0)
-//         return 1;
+static int MultiplicationTable(int n, int m = 9)
+{
+    if (n <= 0)
+        return 1;
 
-//     Console.WriteLine($"{n} x {m} = {n * m}");
+    Console.WriteLine($"{n} x {m} = {n * m}");
 
-//     return MultiplicationTable(n - 1, m);
-// }
+    return MultiplicationTable(n - 1, m);
+}
 
 

@@ -36,44 +36,37 @@ static long Fibonacci(int num)
 }
 
 
-// using System;
+static void PrintMultiplicationMatrixTableRecursive(int rows, int cols, int currentRow = 1, int currentCol = 1)
+{
+    if (currentRow == 1 && currentCol == 1)
+    {
+        Console.Write("\t");
+        for (int j = 1; j <= cols; j++)
+        {
+            Console.Write($"{j}\t");
+        }
+        Console.WriteLine();
+    }
 
-// class ArrowMenu
-// {
-//     static void Main(string[] args)
-//     {
-//         Console.CursorVisible = true;
-//         int selectedOption = 0;
-//         string[] options = { "Option 1", "Option 2", "Option 3", "Option 4" };
-//         while (true)
-//         {
-//             Console.Clear();
-//             Console.WriteLine("Select an option:");
-//             for (int i = 0; i < options.Length; i++)
-//             {
-//                 if (i == selectedOption)
-//                 {
-//                     Console.ForegroundColor = ConsoleColor.Black;
-//                     Console.BackgroundColor = ConsoleColor.White;
-//                 }
-//                 Console.WriteLine(options[i]);
-//                 Console.ResetColor();
-//             }
-//             ConsoleKeyInfo keyInfo = Console.ReadKey();
-//             switch (keyInfo.Key)
-//             {
-//                 case ConsoleKey.UpArrow:
-//                     selectedOption = (selectedOption == 0) ? options.Length - 1 : selectedOption - 1;
-//                     break;
-//                 case ConsoleKey.DownArrow:
-//                     selectedOption = (selectedOption == options.Length - 1) ? 0 : selectedOption + 1;
-//                     break;
-//                 case ConsoleKey.Enter:
-//                     Console.Clear();
-//                     Console.WriteLine("You selected: " + options[selectedOption]);
-//                     Console.ReadLine();
-//                     break;
-//             }
-//         }
-//     }
-// }
+    if (currentCol == 1)
+    {
+        Console.Write($"{currentRow}\t");
+    }
+
+    Console.Write($"{currentRow * currentCol}\t");
+
+    if (currentCol < cols)
+    {
+        PrintMultiplicationMatrixTableRecursive(rows, cols, currentRow, currentCol + 1);
+    }
+    else if (currentRow < rows)
+    {
+        Console.WriteLine();
+        PrintMultiplicationMatrixTableRecursive(rows, cols, currentRow + 1, 1);
+    }
+
+    if (currentRow == rows && currentCol == cols)
+    {
+        Console.WriteLine();
+    }
+}
