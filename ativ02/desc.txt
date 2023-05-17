@@ -1,0 +1,19 @@
+Construa um programa que exiba um menu de opções para uma clínica veterinária. 
+
+Este menu deve contemplar os seguintes níveis:
+
+1 - Cadastros
+    1.1 - Médicos
+    1.2 - Animais
+    1.3 - Atendimentos
+    1.4 - SAIR
+
+2 - Relatórios 
+    2.1 - Animais
+    2.2 - Atendimentos
+    2.3 - SAIR
+
+0 - SAIR
+
+Utilize como exemplo o modelo de menu contruído na última aula de "Tratamento de Exceções", lembre-se de que em alguns casos é melhor utlizar o comando do { } while { } ao invés de outros comandos de repetição.
+Para cada opção selecionada pelo usuário, exiba uma mensagem informando-o onde ele está dentro do sistema. Uma expécie de cabeçalho para cada 'tela selecionada'.
