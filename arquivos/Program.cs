@@ -1,4 +1,8 @@
-﻿int option;
+﻿using arquivos.Views;
+
+// Programa para leitura de dados de pessoas e exportação de arquivos
+
+int option;
 
 do
 {
@@ -13,6 +17,7 @@ do
     {
         case 1:
             Console.WriteLine("Opção clientes");
+            ClientView clientView = new ClientView();
             break;
     }
 
