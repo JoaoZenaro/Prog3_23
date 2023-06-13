@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using arquivos.Models;
+using Arquivos.Models;
 
-namespace arquivos.Data
+namespace Arquivos.Data
 {
     public static class DataSet
     {
-        public static List<Client> clients = new List<Client>();
+        public static List<Client> Clients = new List<Client>();
     }
 }
