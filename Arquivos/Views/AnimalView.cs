@@ -20,22 +20,17 @@ namespace Arquivos.Views
 
         public void Init()
         {
-            Console.WriteLine("1 - Inserir Animal");
-            Console.WriteLine("2 - Listar Animais");
-            Console.WriteLine("3 - Exprtar Animais");
-            Console.WriteLine("4 - Importar Animais\n");
+
+            var menu = new Menu(new string[] {"1 - Inserir Animal", "2 - Listar Animais", "3 - Exprtar Animais", "4 - Importar Animais"});
+            menu.Draw();
 
             int option = 0;
             option = Convert.ToInt32(Console.ReadLine());
 
             switch (option)
             {
-                case 1:
-                    Insert();
-                    break;
-                case 2:
-                    List();
-                    break;
+                case 1: Insert(); break;
+                case 2: List(); break;
                 default:
                     break;
             }

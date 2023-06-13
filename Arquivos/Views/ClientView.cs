@@ -20,22 +20,16 @@ namespace Arquivos.Views
 
         public void Init()
         {
-            Console.WriteLine("1 - Inserir Cliente");
-            Console.WriteLine("2 - Listar Clientes");
-            Console.WriteLine("3 - Exprtar Clientes");
-            Console.WriteLine("4 - Importar Clientes\n");
+            var menu = new Menu(new string[] {"1 - Inserir Cliente", "2 - Listar Clientes", "3 - Exprtar Clientes", "4 - Importar Clientes"});
+            menu.Draw();
+            
             int option = 0;
             option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
-                case 1:
-                    Insert();
-                    break;
+                case 1: Insert(); break;
+                case 2: List(); break;
                 default:
-                    break;
-
-                case 2:
-                    List();
                     break;
             }
         }
@@ -48,6 +42,8 @@ namespace Arquivos.Views
             {
                 Console.WriteLine(Print(listagem[i]));
             }
+
+            Utils.Pause();
         }
 
         private string Print(Client client)

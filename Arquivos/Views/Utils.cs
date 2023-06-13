@@ -16,6 +16,14 @@ namespace Arquivos.Views
             Console.WriteLine($"|  {input}  |");
             Console.WriteLine($"+{new string('-', width)}+\n");
         }
+
+        public static void Pause()
+        {
+            Console.CursorVisible = false;
+            Console.Write("\n\u001b[33m<Pressione alguma tecla para continuar>\u001b[0m");
+            Console.ReadKey();
+            Console.CursorVisible = true;
+        }
     }
 
     public class Menu
@@ -32,45 +40,15 @@ namespace Arquivos.Views
         public void Draw()
         {
             Console.CursorVisible = false;
-            Console.Clear();
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-
+            Console.SetCursorPosition(0, 4);
             for (int i = 0; i < Items.Count; i++)
             {
-                Console.WriteLine($"{(SelectedIndex == i ? $"\u001b[47m \u00BB {Items[i]} \u00AB \u001b[0m" : "   " + Items[i])}");
+                Console.WriteLine($"{(SelectedIndex == i ? $"\u001b[47m{Items[i]}\u001b[0m" : Items[i])}");
             }
+            Console.CursorVisible = true;
         }
 
         public void MoveUp() => SelectedIndex = SelectedIndex == 0 ? Items.Count - 1 : SelectedIndex - 1;
         public void MoveDown() => SelectedIndex = SelectedIndex == Items.Count - 1 ? 0 : SelectedIndex + 1;
     }
-
-    // internal class Program
-    // {
-    //     public static void Main (string[] args)
-    //     {
-    //         var menu = new Menu(new string[] { "Option 1", "Option 2", "Option 3", "Option 4", "Option 5", "Option 6" });
-
-    //         bool done = false;
-
-    //         do
-    //         {
-    //             menu.Draw();
-    //             var keyInfo = Console.ReadKey();
-
-    //             switch (keyInfo.Key)
-    //             {
-    //                 case ConsoleKey.UpArrow: menu.MoveUp (); break;
-    //                 case ConsoleKey.DownArrow: menu.MoveDown(); break;
-    //                 case ConsoleKey.Enter: done = true; break;
-    //             }
-    //         }
-    //         while (!done);
-
-    //         Console.CursorVisible = true;
-    //         Console.ForegroundColor = ConsoleColor.Cyan;
-    //         Console.WriteLine("Selected option: " + (menu.SelectedOption ?? "(nothing)"));
-    //         Console.ReadKey();
-    //     }
-    // }
 }
