@@ -20,15 +20,10 @@ namespace Arquivos.Views
 
         public void Init()
         {
-            Console.WriteLine("*********************");
-            Console.WriteLine("VOCÊ ESTÁ EM CLIENTES");
-            Console.WriteLine("*********************");
-            Console.WriteLine("");
             Console.WriteLine("1 - Inserir Cliente");
             Console.WriteLine("2 - Listar Clientes");
             Console.WriteLine("3 - Exprtar Clientes");
-            Console.WriteLine("4 - Importar Clientes");
-            Console.WriteLine("");
+            Console.WriteLine("4 - Importar Clientes\n");
             int option = 0;
             option = Convert.ToInt32(Console.ReadLine());
             switch (option)

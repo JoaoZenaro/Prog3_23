@@ -20,9 +20,6 @@ namespace Arquivos.Views
 
         public void Init()
         {
-            Console.WriteLine("*********************");
-            Console.WriteLine("VOCÊ ESTÁ EM ANIMAIS");
-            Console.WriteLine("*********************\n");
             Console.WriteLine("1 - Inserir Animal");
             Console.WriteLine("2 - Listar Animais");
             Console.WriteLine("3 - Exprtar Animais");

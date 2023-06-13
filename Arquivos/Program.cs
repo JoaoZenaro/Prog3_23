@@ -3,30 +3,36 @@ using Arquivos.Views;
 
 /* programa para leitura e exportação em arquivos .txt */
 
-int option = 0;
+int option;
 
 do
 {
-    Console.WriteLine("*******************");
-    Console.WriteLine("Programa para leitura e exportação de dados");
-    Console.WriteLine("*******************\n");
+    Utils.BoxPrint("Programa para leitura e exportação de dados");
+
     Console.WriteLine("1 - Clientes");
     Console.WriteLine("2 - Animais");
+    Console.WriteLine("3 - Sair");
 
-    Console.Write("Opção: ");
-    option = Convert.ToInt32(Console.ReadLine());
+    Console.Write("\nOpção: ");
+
+    if(!Int32.TryParse(Console.ReadLine(), out option))
+    {
+        Console.Write("Opção inválida.\n\u001b[33m<Pressione alguma tecla para continuar>\u001b[0m");
+        Console.ReadKey();
+    }
 
     switch (option)
     {
         case 1:
-            Console.WriteLine("OPÇÃO CLIENTES");
+            Utils.BoxPrint("Clientes");
             ClientView clientView = new ClientView();
             break;
         case 2:
-            Console.WriteLine("OPÇÃO ANIMAIS");
+            Utils.BoxPrint("Animais");
             AnimalView animalView = new AnimalView();
             break;
         default:
             break;
     }
-} while (option > 0);
+
+} while (option != 3);
