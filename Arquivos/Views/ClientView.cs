@@ -11,7 +11,7 @@ namespace Arquivos.Views
     public class ClientView
     {
         private ClientController clientController;
-        
+
         public ClientView()
         {
             clientController = new ClientController();
@@ -31,17 +31,17 @@ namespace Arquivos.Views
             Console.WriteLine("");
             int option = 0;
             option = Convert.ToInt32(Console.ReadLine());
-            switch(option)
+            switch (option)
             {
-                case 1 :
+                case 1:
                     Insert();
-                break;
+                    break;
                 default:
-                break;
+                    break;
 
-                case 2 :
+                case 2:
                     List();
-                break;
+                    break;
             }
         }
 
@@ -49,13 +49,11 @@ namespace Arquivos.Views
         {
             List<Client> listagem = clientController.List();
 
-            for(int i = 0; i < listagem.Count; i++)
+            for (int i = 0; i < listagem.Count; i++)
             {
                 Console.WriteLine(Print(listagem[i]));
             }
         }
-
-        
 
         private string Print(Client client)
         {
@@ -72,21 +70,21 @@ namespace Arquivos.Views
             Client client = new Client();
             client.Id = clientController.GetNextId();
 
-            Console.WriteLine("Informe o primeiro nome: ");
+            Console.Write("Informe o primeiro nome: ");
             client.FirstName = Console.ReadLine();
 
-            Console.WriteLine("Informe o segundo nome: ");
+            Console.Write("Informe o segundo nome: ");
             client.LastName = Console.ReadLine();
 
-            Console.WriteLine("Informe o CPF: ");
+            Console.Write("Informe o CPF: ");
             client.CPF = Console.ReadLine();
 
-            Console.WriteLine("Informe o email: ");
+            Console.Write("Informe o email: ");
             client.Email = Console.ReadLine();
 
             bool retorno = clientController.Insert(client);
 
-            if(retorno)
+            if (retorno)
                 Console.WriteLine("Cliente Inserido com sucesso!");
         }
     }
