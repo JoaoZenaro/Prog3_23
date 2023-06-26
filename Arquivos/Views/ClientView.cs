@@ -20,20 +20,33 @@ namespace Arquivos.Views
 
         public void Init()
         {
-            var menu = new Menu(new string[] {"1 - Inserir Cliente", "2 - Listar Clientes", "3 - Exprtar Clientes", "4 - Importar Clientes"});
-            menu.Draw();
-            
-            int option = 0;
-            option = Convert.ToInt32(Console.ReadLine());
-            switch (option)
+            int option;
+
+            do
             {
-                case 1: Insert(); break;
-                case 2: List(); break;
-                case 3: Export(); break;
-                case 4: Import(); break;
-                default:
-                    break;
-            }
+                Utils.BoxPrint("Clientes");
+
+                var menu = new Menu(new string[] {"1 - Inserir Cliente", "2 - Listar Clientes", "3 - Exprtar Clientes", "4 - Importar Clientes", "5 - Pesquisar Clientes", "6 - Voltar"});
+                menu.Draw();
+
+                Console.Write("\nOpção: ");
+                Int32.TryParse(Console.ReadLine(), out option);
+
+                switch (option)
+                {
+                    case 1: Insert(); break;
+                    case 2: List(); break;
+                    case 3: Export(); break;
+                    case 4: Import(); break;
+                    case 5: SearchByName(); break; 
+                    case 6: break;
+                    default:
+                        Console.Write(new string(' ', Console.WindowWidth));
+                        Console.WriteLine("Opção inválida.");
+                        Utils.Pause();
+                        break;
+                }
+            } while (option != 6);            
         }
 
         private void List()
@@ -52,7 +65,7 @@ namespace Arquivos.Views
         {
             string retorno = "";
             retorno += $"Id: {client.Id} \n";
-            retorno += $"Nome: {client.FirstName} {client.LastName}";
+            retorno += $"Nome: {client.FirstName} {client.LastName} \n";
             retorno += "-------------------------------------------";
 
             return retorno;
@@ -79,6 +92,8 @@ namespace Arquivos.Views
 
             if (retorno)
                 Console.WriteLine("Cliente Inserido com sucesso!");
+
+            Utils.Pause();
         }
 
         private void Export()
@@ -87,6 +102,8 @@ namespace Arquivos.Views
                 Console.WriteLine("Arquivo gerado com sucesso!");
             else
                 Console.WriteLine("Ooooopss!");
+
+            Utils.Pause();
         }
 
         private void Import()
@@ -95,6 +112,31 @@ namespace Arquivos.Views
                 Console.WriteLine("Arquivo importado com sucesso!");
             else
                 Console.WriteLine("Ooooopss!");
+
+            Utils.Pause();
+        }
+
+        private void SearchByName()
+        {
+            Console.Write("Digite o nome para pesquisar: ");
+            string? input = Console.ReadLine();
+            
+            List<Client>? clients = new List<Client>(); 
+            clients = clientController.SearchByName(input);
+
+            if (clients?.Count > 0)
+            {
+                foreach (Client client in clients)
+                {
+                    Console.WriteLine(client.ToString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nenhum registro encontrado.");
+            }
+
+            Utils.Pause();
         }
     }
 }

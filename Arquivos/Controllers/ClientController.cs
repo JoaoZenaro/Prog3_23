@@ -42,6 +42,24 @@ namespace Arquivos.Controllers
                 return 1;
         }
 
+        public List<Client>? SearchByName(string? name)
+        {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name)) {
+                return null;
+            }
+
+            List<Client>? clients = new List<Client>();
+
+            for (int i = 0; i < DataSet.Clients.Count; i++)
+            {
+                if (DataSet.Clients[i].FullName.ToLower().Contains(name.ToLower())) {
+                    clients.Add(DataSet.Clients[i]);
+                }
+            }
+
+            return clients;
+        }
+
         public bool ExportToTextFile()
         {
             if (!Directory.Exists(directoryName))
@@ -57,7 +75,7 @@ namespace Arquivos.Controllers
 
             try
             {
-                StreamWriter sw = File.CreateText($"{directoryName}\\{fileName}");
+                StreamWriter sw = File.CreateText($"{directoryName}/{fileName}");
 
                 sw.Write(fileContent);
                 sw.Close();
@@ -76,7 +94,7 @@ namespace Arquivos.Controllers
         {
             try
             {
-                StreamReader sr = new StreamReader($"{directoryName}\\{fileName}");
+                StreamReader sr = new StreamReader($"{directoryName}/{fileName}");
 
                 string? line = string.Empty;
 

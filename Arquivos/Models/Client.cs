@@ -25,5 +25,12 @@ namespace Arquivos.Models
         public string? LastName { get; set; }
         public string? CPF { get; set; }
         public string? Email { get; set; }
+
+        public string FullName => $"{this.FirstName} {this.LastName}";
+
+        public override string ToString()
+        {
+            return $"Id: {this.Id}; Name: {this.FullName} ";//; LastName: {this.LastName}; CPF: {this.CPF}; Email: {this.Email}
+        }
     }
 }

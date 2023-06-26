@@ -3,7 +3,7 @@ using Arquivos.Views;
 
 /* programa para leitura e exportação em arquivos .txt */
 
-bool arrowMenu = true; // true: habilita navegação por setas (up, down)
+bool arrowMenu = false; // true: habilita navegação por setas (up, down) somente menu principal
 int option;
 
 do
@@ -40,11 +40,9 @@ do
     switch (option)
     {
         case 1:
-            Utils.BoxPrint("Clientes");
             ClientView clientView = new ClientView();
             break;
         case 2:
-            Utils.BoxPrint("Animais");
             AnimalView animalView = new AnimalView();
             break;
         case 3:

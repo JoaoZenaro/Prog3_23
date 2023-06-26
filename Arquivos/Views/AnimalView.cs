@@ -21,19 +21,32 @@ namespace Arquivos.Views
         public void Init()
         {
 
-            var menu = new Menu(new string[] {"1 - Inserir Animal", "2 - Listar Animais", "3 - Exprtar Animais", "4 - Importar Animais"});
-            menu.Draw();
+            int option;
 
-            int option = 0;
-            option = Convert.ToInt32(Console.ReadLine());
-
-            switch (option)
+            do
             {
-                case 1: Insert(); break;
-                case 2: List(); break;
-                default:
-                    break;
-            }
+                Utils.BoxPrint("Animais");
+
+                var menu = new Menu(new string[] { "1 - Inserir Animal", "2 - Listar Animais", "3 - Exprtar Animais", "4 - Importar Animais", "5 - Voltar" });
+                menu.Draw();
+
+                Console.Write("\nOpção: ");
+                Int32.TryParse(Console.ReadLine(), out option);
+
+                switch (option)
+                {
+                    case 1: Insert(); break;
+                    case 2: List(); break;
+                    case 3: Export(); break;
+                    case 4: Import(); break;
+                    case 5: break;
+                    default:
+                        Console.Write(new string(' ', Console.WindowWidth));
+                        Console.WriteLine("Opção inválida.");
+                        Utils.Pause();
+                        break;
+                }
+            } while (option != 5);
         }
 
         private void List()
@@ -80,6 +93,26 @@ namespace Arquivos.Views
 
             if (retorno)
                 Console.WriteLine("Animal Inserido com sucesso!");
+        }
+
+        private void Export()
+        {
+            if (animalController.ExportToTextFile())
+                Console.WriteLine("Arquivo gerado com sucesso!");
+            else
+                Console.WriteLine("Ooooopss!");
+
+            Utils.Pause();
+        }
+
+        private void Import()
+        {
+            if (animalController.ImportFromTxtFile())
+                Console.WriteLine("Arquivo importado com sucesso!");
+            else
+                Console.WriteLine("Ooooopss!");
+
+            Utils.Pause();
         }
     }
 }
