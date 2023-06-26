@@ -29,6 +29,8 @@ namespace Arquivos.Views
             {
                 case 1: Insert(); break;
                 case 2: List(); break;
+                case 3: Export(); break;
+                case 4: Import(); break;
                 default:
                     break;
             }
@@ -77,6 +79,22 @@ namespace Arquivos.Views
 
             if (retorno)
                 Console.WriteLine("Cliente Inserido com sucesso!");
+        }
+
+        private void Export()
+        {
+            if (clientController.ExportToTextFile())
+                Console.WriteLine("Arquivo gerado com sucesso!");
+            else
+                Console.WriteLine("Ooooopss!");
+        }
+
+        private void Import()
+        {
+            if (clientController.ImportFromTxtFile())
+                Console.WriteLine("Arquivo importado com sucesso!");
+            else
+                Console.WriteLine("Ooooopss!");
         }
     }
 }

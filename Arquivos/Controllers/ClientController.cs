@@ -9,6 +9,8 @@ namespace Arquivos.Controllers
 {
     public class ClientController
     {
+        private string directoryName = "ReportFiles";
+        private string fileName = "Clients.txt";
 
         public List<Client> List()
         {
@@ -38,6 +40,73 @@ namespace Arquivos.Controllers
                 return DataSet.Clients[tam - 1].Id + 1;
             else
                 return 1;
+        }
+
+        public bool ExportToTextFile()
+        {
+            if (!Directory.Exists(directoryName))
+                Directory.CreateDirectory(directoryName);
+
+            string fileContent = string.Empty;
+
+            foreach (Client client in DataSet.Clients)
+            {
+                fileContent += $"{client.Id};{client.CPF};{client.FirstName};{client.LastName};{client.Email}";
+                fileContent += "\n";
+            }
+
+            try
+            {
+                StreamWriter sw = File.CreateText($"{directoryName}\\{fileName}");
+
+                sw.Write(fileContent);
+                sw.Close();
+            }
+            catch (IOException ioEx)
+            {
+                Console.WriteLine("Erro ao manipular o arquivo.");
+                Console.WriteLine(ioEx.Message);
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool ImportFromTxtFile()
+        {
+            try
+            {
+                StreamReader sr = new StreamReader($"{directoryName}\\{fileName}");
+
+                string? line = string.Empty;
+
+                line = sr.ReadLine();
+
+                while (line != null)
+                {
+                    Client client = new Client();
+
+                    string[] clientData = line.Split(';');
+
+                    client.Id = Convert.ToInt32(clientData[0]);
+                    client.CPF = clientData[1];
+                    client.FirstName = clientData[2];
+                    client.LastName = clientData[3];
+                    client.Email = clientData[4];
+
+                    DataSet.Clients.Add(client);
+
+                    line = sr.ReadLine();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao importar os dados do arquivo.");
+                Console.WriteLine(ex);
+                return false;
+            }
         }
     }
 }
