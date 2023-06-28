@@ -37,7 +37,7 @@ namespace ativ_final.Models
 
         public override string ToString()
         {
-            return $"Id: {this.Id}; Nome: {this.FullName}; CPF: {this.CPF}; Clinica: {this.ClinicName}";
+            return $"Id: {this.Id}; Nome: {this.FullName}; CPF: {this.CPF}; Clinica: {this.ClinicName()}";
         }
     }
 }
