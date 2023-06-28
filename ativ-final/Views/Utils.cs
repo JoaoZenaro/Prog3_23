@@ -11,7 +11,6 @@ namespace ativ_final.Views
         {
             Console.Clear();
             int width = input.Length + 4;
-
             Console.WriteLine($"+{new string('-', width)}+");
             Console.WriteLine($"|  {input}  |");
             Console.WriteLine($"+{new string('-', width)}+\n");
@@ -19,8 +18,10 @@ namespace ativ_final.Views
 
         public static void Pause()
         {
+            Console.CursorVisible = false;
             Console.Write("\n\u001b[33m<Pressione alguma tecla para continuar>\u001b[0m");
             Console.ReadKey();
+            Console.CursorVisible = true;
         }
     }
 

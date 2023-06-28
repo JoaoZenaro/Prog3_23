@@ -26,5 +26,9 @@ namespace ativ_final.Models
         public string? Breed { get; set; }
         public string? Owner { get; set; }
 
+        public override string ToString()
+        {
+            return $"Id: {this.Id}; Nome: {this.Name}; Especie: {this.Species}; Raça: {this.Breed}; Dono: {this.Owner}";
+        }
     }
 }

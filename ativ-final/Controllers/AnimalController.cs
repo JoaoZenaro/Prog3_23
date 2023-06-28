@@ -87,7 +87,7 @@ namespace ativ_final.Controllers
 
                 while (line != null)
                 {
-                    Animal animal = new Animal();
+                    Animal animal = new();
 
                     string[] animalData = line.Split(';');
 
@@ -112,5 +112,22 @@ namespace ativ_final.Controllers
             }
         }
  
+        public List<Animal>? SearchByName(string? name)
+        {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name)) {
+                return null;
+            }
+
+            List<Animal>? animals = new List<Animal>();
+
+            for (int i = 0; i < DataSet.Animals.Count; i++)
+            {
+                if (DataSet.Animals[i].Name.ToLower().Contains(name.ToLower())) {
+                    animals.Add(DataSet.Animals[i]);
+                }
+            }
+
+            return animals;
+        }
     }
 }
