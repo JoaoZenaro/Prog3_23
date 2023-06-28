@@ -29,7 +29,7 @@ namespace ativ_final.Views
 				var menu = new Menu(new string[] { "1 - Inserir", "2 - Listar", "3 - Exportar", "4 - Importar", "5 - Pesquisar (nome)", "6 - Voltar" });
 				menu.Draw();
 
-				Console.Write("\nOpÁ„o: ");
+				Console.Write("\nOp√ß√£o: ");
 				Int32.TryParse(Console.ReadLine(), out option);
 
 				switch (option)
@@ -42,7 +42,7 @@ namespace ativ_final.Views
 					case 6: break;
 					default:
 						Console.Write(new string(' ', Console.WindowWidth));
-						Console.WriteLine("OpÁ„o inv·lida.");
+						Console.WriteLine("Op√ß√£o inv√°lida.");
 						Utils.Pause();
 						break;
 				}
