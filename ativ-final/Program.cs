@@ -3,8 +3,6 @@ using ativ_final.Views;
 
 int option;
 
-//teste
-
 do
 {
     Utils.BoxPrint("Atividade Final de Clínica Veterinária");
@@ -17,6 +15,7 @@ do
     
     switch (option)
     {
+        case 0: Utils.HiddenImport(); break;
         case 1: AnimalView animalView = new AnimalView(); break;
         case 2: VetView vetView = new VetView(); break;
         case 3: ClinicView clinicView = new ClinicView(); break;

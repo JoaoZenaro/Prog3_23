@@ -18,4 +18,4 @@ Critérios:
 ## Atenção!
 
 Projeto desenvolvido em plataforma UNIX, portanto, algumas funcionalidades podem falhar no Windows. 
-> Ex.: Unix / - Windows \
+> Ex.: Unix / : Windows \

@@ -90,7 +90,7 @@ namespace ativ_final.Views
             clinic.Address = Console.ReadLine();
 
             if (clinicController.Insert(clinic))
-                Console.WriteLine("Animal Inserido com sucesso!");
+                Console.WriteLine("Clinica Inserida com sucesso!");
 
             Utils.Pause();
         }
