@@ -7,7 +7,7 @@ do
 {
     Utils.BoxPrint("Atividade Final de Clínica Veterinária");
 
-    var menu = new Menu(new string[] { "1 - Animais", "2 - Veterinarios", "3 - Clinicas", "4 - Sair" });
+    var menu = new Menu(new string[] { "1 - Animais", "2 - Veterinarios", "3 - Clinicas", "4 - Clientes", "5 - Sair" });
     menu.Draw();
 
     Console.Write("\nOpção: ");
@@ -15,11 +15,12 @@ do
     
     switch (option)
     {
-        case 0: Utils.HiddenImport(); break;
+        case 10: Utils.HiddenImport(); break;
         case 1: AnimalView animalView = new AnimalView(); break;
         case 2: VetView vetView = new VetView(); break;
         case 3: ClinicView clinicView = new ClinicView(); break;
-        case 4:
+        case 4: ClientView clientView = new ClientView(); break;
+        case 5:
             Console.Clear();
             Console.WriteLine("Saindo...");
             break;
@@ -30,4 +31,4 @@ do
             break;
     }
 
-} while (option != 4);
+} while (option != 5);

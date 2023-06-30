@@ -11,5 +11,6 @@ namespace ativ_final.Data
         public static List<Animal> Animals = new List<Animal>();
         public static List<Veterinarian> Vets = new List<Veterinarian>();
         public static List<Clinic> Clinics = new List<Clinic>();
+        public static List<Client> Clients = new List<Client>();
     }
 }
